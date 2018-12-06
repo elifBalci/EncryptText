@@ -18,6 +18,7 @@ public class Encrypt {
         this.a = a;
         this.b = b;
         read();
+        encryptText();
     }
 
     public void encryptText(){
@@ -33,13 +34,13 @@ public class Encrypt {
         for(int i= 0; i< word.length(); i++) {
             int temp;
             if((word.charAt(i)>=65 && word.charAt(i)<= 90)){
-                temp = word.charAt(i) -65 ;
-                temp = ((a*temp + b)%26) + 65;
+                temp = word.charAt(i) -64 ;
+                temp = ((a*temp + b)%26) + 64;
                 wordEnc.append((char)temp);
             }
-            if(word.charAt(i)>=97 && word.charAt(i)<= 122) {
-                temp = word.charAt(i)-97;
-                temp = ((a*temp + b)%26) + 97;
+            else if(word.charAt(i)>=97 && word.charAt(i)<= 122) {
+                temp = word.charAt(i)-96;
+                temp = ((a*temp + b)%26) + 96;
                 wordEnc.append((char) temp);
             }
             else
@@ -52,15 +53,17 @@ public class Encrypt {
     public void read(){
         try {
             scanner = new Scanner(new File("/home/melkor/IdeaProjects/discrete/src/com/company/input1.txt"));
+            while(scanner.hasNext()){
+                String line = scanner.next();
+                System.out.println("line is :"+ line);
+                //line = line.replaceAll("[^a-zA-Z0-9]", "");
+                //line = line.trim();
+                originalText.add(line);
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        while(scanner.hasNext()){
-            String line = scanner.next();
-            //line = line.replaceAll("[^a-zA-Z0-9]", "");
-            //line = line.trim();
-            originalText.add(line);
-        }
+
         scanner.close();
     }
     public void write(){
@@ -82,6 +85,7 @@ public class Encrypt {
        }
     }
     public void printEncryptedext(){
+        System.out.println("in print");
         for (int i = 0; i< encriptedText.size(); i++) {
             System.out.println( encriptedText.get(i));
         }
