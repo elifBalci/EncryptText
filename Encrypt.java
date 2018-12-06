@@ -47,6 +47,7 @@ public class Encrypt {
                 wordEnc.append(word.charAt(i));
         }
         return  wordEnc.toString() ;
+
     }
 
     //read text files.
