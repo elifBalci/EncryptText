@@ -28,14 +28,22 @@ public class Encrypt {
     }
 
     public String encryptWord(String word){
+
         StringBuilder wordEnc = new StringBuilder();
         for(int i= 0; i< word.length(); i++) {
-          //Burayı düzenleyerek encrypt'le.:::
-            if((word.charAt(i)>=65 && word.charAt(i)<= 90)  )
+            int temp;
+            if((word.charAt(i)>=65 && word.charAt(i)<= 90)){
+                temp = word.charAt(i) -65 ;
+                temp = ((a*temp + b)%26) + 65;
+                wordEnc.append((char)temp);
+            }
+            if(word.charAt(i)>=97 && word.charAt(i)<= 122) {
+                temp = word.charAt(i)-97;
+                temp = ((a*temp + b)%26) + 97;
+                wordEnc.append((char) temp);
+            }
+            else
                 wordEnc.append(word.charAt(i));
-            if(word.charAt(i)>=97 && word.charAt(i)<= 122)
-                wordEnc.append(word.charAt(i));
-
         }
         return  wordEnc.toString() ;
     }

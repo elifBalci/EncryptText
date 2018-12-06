@@ -5,7 +5,7 @@ public class Value {
     public int a;
     public int b;
 
-    public void Value(){
+    public Value(){
         a = generate();
         b = (int)(Math.random()*alphabetLegth) + 1;
         System.out.println("a is "+ a);
@@ -14,7 +14,7 @@ public class Value {
 
     public int generate(){
         int number = (int)(Math.random()*alphabetLegth);
-        while(number % alphabetLegth != 1 && number != 0)
+        while(number % alphabetLegth != 1 || number == 0)
             number =  (int)(Math.random()*alphabetLegth);
 
         return number;
