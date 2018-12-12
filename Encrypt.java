@@ -34,13 +34,13 @@ public class Encrypt {
         for(int i= 0; i< word.length(); i++) {
             int temp;
             if((word.charAt(i)>=65 && word.charAt(i)<= 90)){
-                temp = word.charAt(i) -64 ;
-                temp = ((a*temp + b)%26) + 64;
+                temp = word.charAt(i) - 'A' ;
+                temp = ((a*temp + b)%26) + 'A';
                 wordEnc.append((char)temp);
             }
             else if(word.charAt(i)>=97 && word.charAt(i)<= 122) {
-                temp = word.charAt(i)-96;
-                temp = ((a*temp + b)%26) + 96;
+                temp = word.charAt(i)-'a';
+                temp = ((a*temp + b)%26) + 'a';
                 wordEnc.append((char) temp);
             }
             else
